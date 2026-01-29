@@ -115,6 +115,15 @@ VITE_EMAIL_PUBLIC_KEY=Try7tc29-wnfxyPyf
 
 ---
 
+✉️ Variables usadas en el formulario
+
+from_name - Nombre del usuario
+
+from_email - Email del usuario
+message - Mensaje
+
+---
+
 📦 Instalación y ejecución
 
 1. Clona el repositorio:

@@ -7,6 +7,7 @@ import {
   Snackbar,
   Alert,
   InputAdornment,
+  Paper,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import {
@@ -16,21 +17,33 @@ import {
   Email,
   Message,
 } from "@mui/icons-material";
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo } from "react";
 import { useTheme } from "@mui/material/styles";
 import { sendEmail } from "../utils/emailjs";
 import { inputStyle } from "../styles/inputStyle";
+import { contactFormStyles } from "../styles/contactFormStyles";
 
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0 },
 };
 
 export default function ContactForm() {
   const theme = useTheme();
   const formRef = useRef(null);
   const [success, setSuccess] = useState(false);
+
+  const inputStyles = useMemo(() => inputStyle(theme), [theme]);
+  const styles = useMemo(() => contactFormStyles(theme), [theme]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,110 +60,92 @@ export default function ContactForm() {
     {
       name: "from_name",
       label: "Nombre",
-      icon: <Person color="primary" />,
+      icon: <Person />,
     },
     {
       name: "from_email",
       label: "Correo electrónico",
       type: "email",
-      icon: <Email color="primary" />,
+      icon: <Email />,
     },
     {
       name: "message",
       label: "Mensaje",
       multiline: true,
       rows: 4,
-      icon: <Message color="primary" />,
+      icon: <Message />,
     },
   ];
 
   return (
-    <Box sx={{ py: { xs: 4, md: 6 } }}>
+    <Box sx={styles.section}>
       <Container maxWidth="sm">
-        {/* TÍTULO */}
-        <motion.div {...fadeUp} style={{ textAlign: "center", marginBottom: 32 }}>
-          <Box
-            sx={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 1,
-              px: 3,
-              py: 1,
-              borderRadius: "999px",
-              border: "1px solid",
-              borderColor: "primary.main",
-            }}
-          >
-            <ContactMail color="primary" />
-            <Typography fontWeight={700}>Contacto</Typography>
+        {/* HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+        >
+          <Box sx={styles.headerWrapper}>
+            <Box sx={styles.chip}>
+              <ContactMail color="primary" />
+              <Typography fontWeight={700}>Contacto</Typography>
+            </Box>
+
+            <Typography sx={styles.subtitle}>
+              ¿Tienes un proyecto en mente? Escríbeme 👇
+            </Typography>
           </Box>
         </motion.div>
 
-        {/* SUBTÍTULO */}
-        <motion.div {...fadeUp}>
-          <Typography
-            textAlign="center"
-            fontWeight={600}
-            mb={4}
-            color="text.secondary"
+        {/* CARD */}
+        <Paper elevation={0} sx={styles.card}>
+          <Box
+            component={motion.form}
+            ref={formRef}
+            onSubmit={handleSubmit}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            sx={styles.form}
           >
-            Ponte en contacto conmigo a través de este formulario
-          </Typography>
-        </motion.div>
+            {fields.map((field) => (
+              <motion.div key={field.name} variants={itemVariants}>
+                <TextField
+                  {...field}
+                  fullWidth
+                  required
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment
+                        position="start"
+                        sx={
+                          field.multiline
+                            ? styles.adornmentMultiline
+                            : undefined
+                        }
+                      >
+                        {field.icon}
+                      </InputAdornment>
+                    ),
+                  }}
+                  sx={inputStyles}
+                />
+              </motion.div>
+            ))}
 
-        {/* FORM */}
-        <Box
-          component="form"
-          ref={formRef}
-          onSubmit={handleSubmit}
-          sx={{ display: "flex", flexDirection: "column", gap: 3 }}
-        >
-          {fields.map((field, i) => (
-            <motion.div
-              key={field.name}
-              {...fadeUp}
-              transition={{ delay: i * 0.1 }}
-            >
-              <TextField
-                {...field}
+            {/* BOTÓN */}
+            <motion.div variants={itemVariants}>
+              <Button
+                type="submit"
                 fullWidth
-                required
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment
-                      position="start"
-                      sx={
-                        field.multiline
-                          ? { alignSelf: "flex-start", mt: 1 }
-                          : {}
-                      }
-                    >
-                      {field.icon}
-                    </InputAdornment>
-                  ),
-                }}
-                sx={inputStyle(theme)}
-              />
+                endIcon={<Send />}
+                sx={styles.button}
+              >
+                Enviar mensaje
+              </Button>
             </motion.div>
-          ))}
-
-          {/* BOTÓN */}
-          <motion.div {...fadeUp} transition={{ delay: 0.4 }}>
-            <Button
-              type="submit"
-              fullWidth
-              endIcon={<Send />}
-              sx={{
-                py: 1.6,
-                borderRadius: "999px",
-                fontWeight: 700,
-                textTransform: "none",
-              }}
-            >
-              Enviar mensaje
-            </Button>
-          </motion.div>
-        </Box>
+          </Box>
+        </Paper>
 
         {/* ALERT */}
         <Snackbar
@@ -159,11 +154,11 @@ export default function ContactForm() {
           onClose={() => setSuccess(false)}
           anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          <Alert severity="success" sx={{ fontWeight: 600 }}>
+          <Alert severity="success" sx={styles.alert}>
             ¡Mensaje enviado con éxito! 🚀
           </Alert>
         </Snackbar>
       </Container>
     </Box>
   );
-          }
+}

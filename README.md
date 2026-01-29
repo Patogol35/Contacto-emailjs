@@ -1,22 +1,7 @@
-Login Frontend
+📩 Contact Form – React + Vite + MUI + EmailJS
 
-Aplicación frontend desarrollada con React + Vite, lista para producción, que implementa un sistema de autenticación con Google OAuth2 mediante sesiones por cookies, conectada a un backend desarrollado con Django + django-allauth.
-
-El backend se encuentra disponible aquí:
-
-👉 https://github.com/Patogol35/Jorge-back-gmail 
-
----
-
-✨ Características principales
-
-- Autenticación con Google
-  
-- Inicio de sesión usando Google OAuth2.
-  
-- Redirección segura al backend para autenticación.
-  
-- Sesiones gestionadas mediante cookies HttpOnly.
+Formulario de contacto moderno y responsive construido con React (Vite), Material UI, Framer Motion y EmailJS.  
+Ideal para portafolios personales o sitios profesionales, con envío de correos sin backend.
 
 --- 
 
@@ -28,15 +13,13 @@ El backend se encuentra disponible aquí:
 
 ⚙️ Tecnologías utilizadas
 
-- React con Vite
-  
-- React Router DOM
-  
-- JavaScript
+- React (Vite)
   
 - Material UI (MUI)
   
-- Framer Motion
+- 🎬 Framer Motion
+  
+- ✉️ EmailJS
 
 --- 
 

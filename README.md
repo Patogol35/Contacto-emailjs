@@ -25,59 +25,65 @@ Ideal para portafolios personales o sitios profesionales, con envío de correos 
 
 🔐 Configuración de EmailJS (PASO A PASO)
 
-- Crear cuenta
-- 
-Entra a 👉 https://www.emailjs.com
+1. Crear cuenta
+
+- Entra a 👉 https://www.emailjs.com
 Inicia sesión (puedes usar Google).
 
-- Crear Email Service
+2. Crear Email Service
   
-Ve a Email Services
+- Ve a Email Services
 
-Click en Add New Service
+- Click en Add New Service
 
-Selecciona Gmail (recomendado)
+- Selecciona Gmail (recomendado)
 
-Conecta tu correo
+- Conecta tu correo
 
-Guarda y copia el Service ID
+- Guarda y copia el Service ID
 
 Ejemplo:
-Copiar código
 
 service_fd9ejbr
-3️⃣ Crear la plantilla (Template)
-Ve a Email Templates
-Click en Create New Template
-Asigna un nombre (ej: contact_form)
-Guarda y copia el Template ID
+
+3. Crear la plantilla (Template)
+   
+- Ve a Email Templates
+  
+- Click en Create New Template
+  
+- Asigna un nombre (ej: contact_form)
+  
+- Guarda y copia el Template ID
+  
 Ejemplo:
-Copiar código
 
 template_pwsn0sn
-4️⃣ Configurar la plantilla
+
+4. Configurar la plantilla
+
 Subject
-Copiar código
 
 📩 Nuevo mensaje de {{from_name}}
+
 To Email
 
-
 tu-correo@gmail.com
+
 From Name
-Copiar código
 
 {{from_name}}
+
 From Email
-Copiar código
 
 Use Default Email Address
-Reply To
-Copiar código
+
+Reply to
 
 {{from_email}}
+
 Content (HTML)
-Copiar código
+
 Html
 <h3>📨 Nuevo mensaje desde el portafolio</h3>
 
@@ -86,17 +92,23 @@ Html
 
 <p><strong>Mensaje:</strong></p>
 <p>{{message}}</p>
-5️⃣ Obtener la Public Key
-Ve a Account → API Keys
-Copia la Public Key
+
+5. Obtener la Public Key
+   
+- Ve a Account → API Keys
+  
+- Copia la Public Key
 Ejemplo:
-Copiar código
 
 Try7tc29-wnfxyPyf
+
+---
+
 📄 Variables de entorno
-Crea un archivo .env en la raíz del proyecto:
-Copiar código
-Env
+
+- Crea un archivo .env en la raíz del proyecto:
+
+
 VITE_EMAIL_SERVICE=service_fd9ejbr
 VITE_EMAIL_TEMPLATE=template_pwsn0sn
 VITE_EMAIL_PUBLIC_KEY=Try7tc29-wnfxyPyf

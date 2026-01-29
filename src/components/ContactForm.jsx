@@ -38,8 +38,8 @@ export default function ContactForm() {
       await sendEmail(formRef.current);
       setSuccess(true);
       formRef.current.reset();
-    } catch {
-      setSuccess(false);
+    } catch (error) {
+      console.error("Error al enviar email:", error);
     }
   };
 
@@ -65,12 +65,14 @@ export default function ContactForm() {
   ];
 
   return (
-    <Box sx={{ py: 6 }}>
+    <Box sx={{ py: { xs: 4, md: 6 } }}>
       <Container maxWidth="sm">
+        {/* TÍTULO */}
         <motion.div {...fadeUp} style={{ textAlign: "center", marginBottom: 32 }}>
           <Box
             sx={{
               display: "inline-flex",
+              alignItems: "center",
               gap: 1,
               px: 3,
               py: 1,
@@ -84,6 +86,19 @@ export default function ContactForm() {
           </Box>
         </motion.div>
 
+        {/* SUBTÍTULO */}
+        <motion.div {...fadeUp}>
+          <Typography
+            textAlign="center"
+            fontWeight={600}
+            mb={4}
+            color="text.secondary"
+          >
+            Ponte en contacto conmigo a través de este formulario
+          </Typography>
+        </motion.div>
+
+        {/* FORM */}
         <Box
           component="form"
           ref={formRef}
@@ -91,14 +106,25 @@ export default function ContactForm() {
           sx={{ display: "flex", flexDirection: "column", gap: 3 }}
         >
           {fields.map((field, i) => (
-            <motion.div key={field.name} {...fadeUp} transition={{ delay: i * 0.1 }}>
+            <motion.div
+              key={field.name}
+              {...fadeUp}
+              transition={{ delay: i * 0.1 }}
+            >
               <TextField
                 {...field}
                 fullWidth
                 required
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position="start">
+                    <InputAdornment
+                      position="start"
+                      sx={
+                        field.multiline
+                          ? { alignSelf: "flex-start", mt: 1 }
+                          : {}
+                      }
+                    >
                       {field.icon}
                     </InputAdornment>
                   ),
@@ -108,15 +134,17 @@ export default function ContactForm() {
             </motion.div>
           ))}
 
+          {/* BOTÓN */}
           <motion.div {...fadeUp} transition={{ delay: 0.4 }}>
             <Button
               type="submit"
               fullWidth
               endIcon={<Send />}
               sx={{
-                py: 1.5,
+                py: 1.6,
                 borderRadius: "999px",
                 fontWeight: 700,
+                textTransform: "none",
               }}
             >
               Enviar mensaje
@@ -124,16 +152,18 @@ export default function ContactForm() {
           </motion.div>
         </Box>
 
+        {/* ALERT */}
         <Snackbar
           open={success}
           autoHideDuration={3000}
           onClose={() => setSuccess(false)}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          <Alert severity="success">
-            ¡Mensaje enviado correctamente!
+          <Alert severity="success" sx={{ fontWeight: 600 }}>
+            ¡Mensaje enviado con éxito! 🚀
           </Alert>
         </Snackbar>
       </Container>
     </Box>
   );
-}
+          }

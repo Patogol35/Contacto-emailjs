@@ -23,6 +23,27 @@ Ideal para portafolios personales o sitios profesionales, con envío de correos 
 
 --- 
 
+🔐 Configuración de EmailJS (PASO A PASO)
+
+- Crear cuenta
+- 
+Entra a 👉 https://www.emailjs.com
+Inicia sesión (puedes usar Google).
+
+- Crear Email Service
+  
+Ve a Email Services
+
+Click en Add New Service
+
+Selecciona Gmail (recomendado)
+
+Conecta tu correo
+
+Guarda y copia el Service ID
+
+---
+
 📦 Instalación y ejecución
 
 1. Clona el repositorio:

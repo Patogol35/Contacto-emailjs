@@ -17,7 +17,7 @@ import {
   Email,
   Message,
 } from "@mui/icons-material";
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo } from "react";
 import { useTheme } from "@mui/material/styles";
 import { sendEmail } from "../utils/emailjs";
 import {
@@ -39,16 +39,46 @@ const fadeUp = {
   }),
 };
 
+const motionProps = {
+  variants: fadeUp,
+  initial: "hidden",
+  whileInView: "visible",
+};
+
 const fields = [
-  { name: "from_name", label: "Nombre", icon: <Person /> },
-  { name: "from_email", label: "Correo electrónico", type: "email", icon: <Email /> },
-  { name: "message", label: "Mensaje", multiline: true, rows: 4, icon: <Message /> },
+  {
+    name: "from_name",
+    label: "Nombre",
+    icon: <Person />,
+  },
+  {
+    name: "from_email",
+    label: "Correo electrónico",
+    type: "email",
+    icon: <Email />,
+  },
+  {
+    name: "message",
+    label: "Mensaje",
+    multiline: true,
+    rows: 4,
+    icon: <Message />,
+  },
 ];
 
 export default function ContactForm() {
   const theme = useTheme();
   const formRef = useRef(null);
   const [success, setSuccess] = useState(false);
+
+  const styles = useMemo(
+    () => ({
+      input: inputStyle(theme),
+      wrapper: contactWrapper(theme),
+      button: submitButton(theme),
+    }),
+    [theme]
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,7 +87,7 @@ export default function ContactForm() {
       setSuccess(true);
       formRef.current.reset();
     } catch (err) {
-      console.error(err);
+      console.error("Error enviando mensaje:", err);
     }
   };
 
@@ -67,10 +97,8 @@ export default function ContactForm() {
         <MotionBox
           component={Paper}
           elevation={0}
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          sx={contactWrapper(theme)}
+          {...motionProps}
+          sx={styles.wrapper}
         >
           {/* HEADER */}
           <Box textAlign="center" mb={4}>
@@ -91,38 +119,41 @@ export default function ContactForm() {
           </Box>
 
           {/* FORM */}
-          <Box component="form" ref={formRef} onSubmit={handleSubmit} sx={formLayout}>
+          <Box
+            component="form"
+            ref={formRef}
+            onSubmit={handleSubmit}
+            sx={formLayout}
+          >
             {fields.map((field, i) => (
-              <MotionBox
-                key={field.name}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-              >
+              <MotionBox key={field.name} custom={i} {...motionProps}>
                 <TextField
                   {...field}
                   fullWidth
                   required
+                  inputProps={{ "aria-label": field.label }}
                   InputProps={{
                     startAdornment: (
-                      <InputAdornment position="start" sx={{ color: "primary.main" }}>
+                      <InputAdornment
+                        position="start"
+                        sx={{ color: "primary.main" }}
+                      >
                         {field.icon}
                       </InputAdornment>
                     ),
                   }}
-                  sx={inputStyle(theme)}
+                  sx={styles.input}
                 />
               </MotionBox>
             ))}
 
             {/* BUTTON */}
-            <MotionBox custom={fields.length + 1} variants={fadeUp} initial="hidden" whileInView="visible">
+            <MotionBox custom={fields.length + 1} {...motionProps}>
               <Button
                 type="submit"
                 fullWidth
                 endIcon={<Send />}
-                sx={submitButton(theme)}
+                sx={styles.button}
               >
                 Enviar mensaje
               </Button>

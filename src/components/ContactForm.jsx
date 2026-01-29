@@ -20,7 +20,13 @@ import {
 import { useRef, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { sendEmail } from "../utils/emailjs";
-import { inputStyle } from "../styles/inputStyle";
+import {
+  inputStyle,
+  contactWrapper,
+  headerBadge,
+  formLayout,
+  submitButton,
+} from "../styles/inputStyle";
 
 const MotionBox = motion(Box);
 
@@ -34,24 +40,9 @@ const fadeUp = {
 };
 
 const fields = [
-  {
-    name: "from_name",
-    label: "Nombre",
-    icon: <Person />,
-  },
-  {
-    name: "from_email",
-    label: "Correo electrónico",
-    type: "email",
-    icon: <Email />,
-  },
-  {
-    name: "message",
-    label: "Mensaje",
-    multiline: true,
-    rows: 4,
-    icon: <Message />,
-  },
+  { name: "from_name", label: "Nombre", icon: <Person /> },
+  { name: "from_email", label: "Correo electrónico", type: "email", icon: <Email /> },
+  { name: "message", label: "Mensaje", multiline: true, rows: 4, icon: <Message /> },
 ];
 
 export default function ContactForm() {
@@ -79,29 +70,13 @@ export default function ContactForm() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          sx={{
-            p: { xs: 3, md: 4 },
-            borderRadius: 4,
-            background:
-              theme.palette.mode === "dark"
-                ? "rgba(15,23,42,0.6)"
-                : "rgba(255,255,255,0.8)",
-            backdropFilter: "blur(18px)",
-            border: "1px solid",
-            borderColor: "divider",
-          }}
+          sx={contactWrapper(theme)}
         >
           {/* HEADER */}
           <Box textAlign="center" mb={4}>
             <Box
               sx={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 1,
-                px: 3,
-                py: 1,
-                borderRadius: "999px",
-                border: "1px solid",
+                ...headerBadge,
                 borderColor: "primary.main",
                 mb: 2,
               }}
@@ -116,12 +91,7 @@ export default function ContactForm() {
           </Box>
 
           {/* FORM */}
-          <Box
-            component="form"
-            ref={formRef}
-            onSubmit={handleSubmit}
-            sx={{ display: "flex", flexDirection: "column", gap: 3 }}
-          >
+          <Box component="form" ref={formRef} onSubmit={handleSubmit} sx={formLayout}>
             {fields.map((field, i) => (
               <MotionBox
                 key={field.name}
@@ -136,10 +106,7 @@ export default function ContactForm() {
                   required
                   InputProps={{
                     startAdornment: (
-                      <InputAdornment
-                        position="start"
-                        sx={{ color: "primary.main" }}
-                      >
+                      <InputAdornment position="start" sx={{ color: "primary.main" }}>
                         {field.icon}
                       </InputAdornment>
                     ),
@@ -150,27 +117,12 @@ export default function ContactForm() {
             ))}
 
             {/* BUTTON */}
-            <MotionBox
-              custom={fields.length + 1}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-            >
+            <MotionBox custom={fields.length + 1} variants={fadeUp} initial="hidden" whileInView="visible">
               <Button
                 type="submit"
                 fullWidth
                 endIcon={<Send />}
-                sx={{
-                  py: 1.7,
-                  borderRadius: "999px",
-                  fontWeight: 700,
-                  textTransform: "none",
-                  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
-                  color: "#fff",
-                  "&:hover": {
-                    opacity: 0.9,
-                  },
-                }}
+                sx={submitButton(theme)}
               >
                 Enviar mensaje
               </Button>
@@ -192,4 +144,4 @@ export default function ContactForm() {
       </Container>
     </Box>
   );
-            }
+}

@@ -17,9 +17,9 @@ Ideal para portafolios personales o sitios profesionales, con envío de correos 
   
 - Material UI (MUI)
   
-- 🎬 Framer Motion
+- Framer Motion
   
-- ✉️ EmailJS
+- EmailJS
 
 --- 
 
@@ -30,7 +30,7 @@ Ideal para portafolios personales o sitios profesionales, con envío de correos 
 ```bash
 
 git clone 
-https://github.com/Patogol35/Jorge-front-gmail
+https://github.com/Patogol35/Contacto-emailjs
 
 ```
 
@@ -38,7 +38,7 @@ https://github.com/Patogol35/Jorge-front-gmail
 
 ```bash
 
-cd Jorge-front-gmail
+cd Contacto-emailjs
 
 ```
 
@@ -62,51 +62,8 @@ npm run dev
   
 http://localhost:5173
 
----
-
-⚙️ Variables de entorno
-
-Para producción crea un archivo .env en la raíz del proyecto y añade:
-
-```bash
-
-VITE_BACKEND_URL=https://jorge-back-gmail.onrender.com
-
-```
-
-De esta manera, cualquiera puede reemplazar la URL por su propio backend desplegado.
 
 ---
-
-🔄 Flujo de autenticación
-
-- El usuario accede al frontend.
-  
-- Click en Continuar con Google.
-  
-- Redirección al backend.
-  
-- Autenticación con Google OAuth.
-  
-- Creación de sesión en Django.
-  
-- Redirección automática al frontend.
-  
-- Validación de sesión usando /api/me/.
-
----
-
-🚀 Deploy en Vercel
-
-Después de configurar la variable de entorno:
-
-- Conectar el repositorio en https://vercel.com
-  
-- Configurar VITE_BACKEND_URL
-  
-- Deploy automático en cada push
-
-  ---
 
 👨‍💻 Autor
 

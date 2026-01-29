@@ -1,16 +1,133 @@
-# React + Vite
+Login Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación frontend desarrollada con React + Vite, lista para producción, que implementa un sistema de autenticación con Google OAuth2 mediante sesiones por cookies, conectada a un backend desarrollado con Django + django-allauth.
 
-Currently, two official plugins are available:
+El backend se encuentra disponible aquí:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👉 https://github.com/Patogol35/Jorge-back-gmail 
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✨ Características principales
 
-## Expanding the ESLint configuration
+- Autenticación con Google
+  
+- Inicio de sesión usando Google OAuth2.
+  
+- Redirección segura al backend para autenticación.
+  
+- Sesiones gestionadas mediante cookies HttpOnly.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+--- 
+
+💻 Ver la aplicación desplegada en Vercel
+
+👉 https://jorge-login-gmail.vercel.app/
+
+---
+
+⚙️ Tecnologías utilizadas
+
+- React con Vite
+  
+- React Router DOM
+  
+- JavaScript
+  
+- Material UI (MUI)
+  
+- Framer Motion
+
+--- 
+
+📦 Instalación y ejecución
+
+1. Clona el repositorio:
+
+```bash
+
+git clone 
+https://github.com/Patogol35/Jorge-front-gmail
+
+```
+
+2. Ingresa a la carpeta del proyecto:
+
+```bash
+
+cd Jorge-front-gmail
+
+```
+
+3. Instala las dependencias:
+
+```bash
+  
+npm install
+
+```
+
+4. Ejecuta el proyecto:
+
+```bash
+
+npm run dev
+
+```
+
+5. Abre en el navegador:
+  
+http://localhost:5173
+
+---
+
+⚙️ Variables de entorno
+
+Para producción crea un archivo .env en la raíz del proyecto y añade:
+
+```bash
+
+VITE_BACKEND_URL=https://jorge-back-gmail.onrender.com
+
+```
+
+De esta manera, cualquiera puede reemplazar la URL por su propio backend desplegado.
+
+---
+
+🔄 Flujo de autenticación
+
+- El usuario accede al frontend.
+  
+- Click en Continuar con Google.
+  
+- Redirección al backend.
+  
+- Autenticación con Google OAuth.
+  
+- Creación de sesión en Django.
+  
+- Redirección automática al frontend.
+  
+- Validación de sesión usando /api/me/.
+
+---
+
+🚀 Deploy en Vercel
+
+Después de configurar la variable de entorno:
+
+- Conectar el repositorio en https://vercel.com
+  
+- Configurar VITE_BACKEND_URL
+  
+- Deploy automático en cada push
+
+  ---
+
+👨‍💻 Autor
+
+Jorge Patricio Santamaría Cherrez
+
+Máster en Ingeniería de Software y Sistemas Informáticos
+

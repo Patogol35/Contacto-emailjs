@@ -42,6 +42,65 @@ Conecta tu correo
 
 Guarda y copia el Service ID
 
+Ejemplo:
+Copiar código
+
+service_fd9ejbr
+3️⃣ Crear la plantilla (Template)
+Ve a Email Templates
+Click en Create New Template
+Asigna un nombre (ej: contact_form)
+Guarda y copia el Template ID
+Ejemplo:
+Copiar código
+
+template_pwsn0sn
+4️⃣ Configurar la plantilla
+Subject
+Copiar código
+
+📩 Nuevo mensaje de {{from_name}}
+To Email
+
+
+tu-correo@gmail.com
+From Name
+Copiar código
+
+{{from_name}}
+From Email
+Copiar código
+
+Use Default Email Address
+Reply To
+Copiar código
+
+{{from_email}}
+Content (HTML)
+Copiar código
+Html
+<h3>📨 Nuevo mensaje desde el portafolio</h3>
+
+<p><strong>Nombre:</strong> {{from_name}}</p>
+<p><strong>Email:</strong> {{from_email}}</p>
+
+<p><strong>Mensaje:</strong></p>
+<p>{{message}}</p>
+5️⃣ Obtener la Public Key
+Ve a Account → API Keys
+Copia la Public Key
+Ejemplo:
+Copiar código
+
+Try7tc29-wnfxyPyf
+📄 Variables de entorno
+Crea un archivo .env en la raíz del proyecto:
+Copiar código
+Env
+VITE_EMAIL_SERVICE=service_fd9ejbr
+VITE_EMAIL_TEMPLATE=template_pwsn0sn
+VITE_EMAIL_PUBLIC_KEY=Try7tc29-wnfxyPyf
+
 ---
 
 📦 Instalación y ejecución

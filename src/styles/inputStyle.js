@@ -100,7 +100,9 @@ backdropFilter: `blur(${GLASS_BLUR.input})`,
         borderColor: theme.palette.primary.light,
       },
 
-      
+      "&:hover": {
+  boxShadow: `0 4px 12px ${theme.palette.primary.main}18`,
+},
 
       "&.Mui-focused": {
         boxShadow: `0 0 0 2px ${theme.palette.primary.main}25`,

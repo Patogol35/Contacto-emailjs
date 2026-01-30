@@ -7,7 +7,7 @@ Ideal para portafolios personales o sitios profesionales, con envío de correos 
 
 💻 Ver la aplicación desplegada en Vercel
 
-👉 https://jorge-login-gmail.vercel.app/
+👉 https://contacto-emailjs.vercel.app/
 
 ---
 

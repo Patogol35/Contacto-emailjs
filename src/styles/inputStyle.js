@@ -91,7 +91,9 @@ export const inputStyle = (theme) => {
         borderColor: theme.palette.primary.light,
       },
 
-      
+      "&.Mui-focused": {
+  boxShadow: `0 0 0 2px ${theme.palette.primary.main}25`,
+},
 
       "&.Mui-focused fieldset": {
         borderColor: theme.palette.primary.main,

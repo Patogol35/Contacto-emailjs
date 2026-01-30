@@ -1,13 +1,9 @@
-// ==============================
-// LAYOUT
-// ==============================
+// ===== LAYOUT =====
 export const sectionWrapper = {
   py: { xs: 6, md: 10 },
 };
 
-// ==============================
-// CONTACT WRAPPER
-// ==============================
+// ===== CONTACT WRAPPER =====
 export const contactWrapper = (theme) => {
   const isDark = theme.palette.mode === "dark";
 
@@ -37,9 +33,7 @@ export const contactWrapper = (theme) => {
   };
 };
 
-// ==============================
-// HEADER
-// ==============================
+// ===== HEADER =====
 export const headerBadge = (theme) => ({
   display: "inline-flex",
   alignItems: "center",
@@ -59,18 +53,14 @@ export const headerText = {
   mx: "auto",
 };
 
-// ==============================
-// FORM
-// ==============================
+// ===== FORM =====
 export const formLayout = {
   display: "flex",
   flexDirection: "column",
   gap: 3.2,
 };
 
-// ==============================
-// INPUTS (Outlined TextField)
-// ==============================
+// ===== INPUTS =====
 export const inputStyle = (theme) => {
   const isDark = theme.palette.mode === "dark";
 
@@ -83,19 +73,16 @@ export const inputStyle = (theme) => {
       backdropFilter: "blur(12px)",
       transition: "all .25s ease",
 
-      // Texto
       "& input, & textarea": {
         fontWeight: 600,
       },
 
-      // Borde real
       "& fieldset": {
         borderColor: isDark
           ? "rgba(96,165,250,0.25)"
           : "rgba(37,99,235,0.6)",
       },
 
-      // Hover
       "&:hover": {
         transform: "translateY(-1px)",
       },
@@ -104,7 +91,6 @@ export const inputStyle = (theme) => {
         borderColor: theme.palette.primary.light,
       },
 
-      // Focus
       "&.Mui-focused": {
         boxShadow: `0 0 0 2px ${theme.palette.primary.main}25`,
       },
@@ -112,16 +98,6 @@ export const inputStyle = (theme) => {
       "&.Mui-focused fieldset": {
         borderColor: theme.palette.primary.main,
       },
-
-      // 🚫 Quita la línea/notch del label (SIN perder borde)
-      "& legend": {
-        display: "none",
-      },
-    },
-
-    // Label
-    "& .MuiInputLabel-root": {
-      fontWeight: 600,
     },
   };
 };
@@ -130,9 +106,7 @@ export const adornmentStyle = {
   color: "primary.main",
 };
 
-// ==============================
-// BUTTON
-// ==============================
+// ===== BUTTON =====
 export const submitButton = (theme) => ({
   py: 1.8,
   borderRadius: "999px",
@@ -156,9 +130,7 @@ export const submitButton = (theme) => ({
   },
 });
 
-// ==============================
-// ALERT
-// ==============================
+// ===== ALERT =====
 export const successAlert = {
   fontWeight: 600,
   borderRadius: 2,

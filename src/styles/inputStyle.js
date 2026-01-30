@@ -29,8 +29,8 @@ export const contactWrapper = (theme) => {
       ? "0 30px 70px rgba(0,0,0,0.5)"
       : "0 30px 70px rgba(0,0,0,0.18)",
     overflow: "hidden",
-
-    "&::before": {
+    
+   "&::before": {
       content: '""',
       position: "absolute",
       inset: 0,
@@ -80,7 +80,7 @@ export const inputStyle = (theme) => {
         : "rgba(255,255,255,0.88)",
       
       transition: "all .25s ease",
-
+backdropFilter: `blur(${GLASS_BLUR.input})`,
       "& input": {
         fontWeight: 500,
       },
@@ -100,9 +100,7 @@ export const inputStyle = (theme) => {
         borderColor: theme.palette.primary.light,
       },
 
-      "&:hover": {
-        boxShadow: `0 4px 12px ${theme.palette.primary.main}18`,
-      },
+      
 
       "&.Mui-focused": {
         boxShadow: `0 0 0 2px ${theme.palette.primary.main}25`,

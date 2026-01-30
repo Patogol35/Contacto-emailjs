@@ -104,7 +104,6 @@ tu-correo@gmail.com
 
 ```
 
-```bash
 
 - Content (HTML)
 

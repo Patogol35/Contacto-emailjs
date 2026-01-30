@@ -85,11 +85,6 @@ template_pwsn0sn
 
 4. Configurar la plantilla
 
-To Email:
-
-Pon tu correo, ejemplo: 
-patogol3737@gmail.com
-
 - Subject
 
 Ejemplo: 📩 Nuevo mensaje desde el portafolio

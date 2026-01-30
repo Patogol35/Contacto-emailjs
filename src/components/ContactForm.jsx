@@ -84,7 +84,7 @@ export default function ContactForm() {
 
   return (
     <Box sx={sectionWrapper}>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <MotionBox
           component={Paper}
           elevation={0}
@@ -92,7 +92,7 @@ export default function ContactForm() {
           sx={contactWrapper(theme)}
         >
           {/* HEADER */}
-          <Box textAlign="center" mb={4}>
+          <Box textAlign="center" mb={5}>
             <Box sx={headerBadge(theme)}>
               <ContactMail color="primary" />
               <Typography fontWeight={700}>Contacto</Typography>
@@ -111,7 +111,14 @@ export default function ContactForm() {
             sx={formLayout}
           >
             {fields.map((field, i) => (
-              <MotionBox key={field.name} custom={i} {...motionProps}>
+              <MotionBox
+                key={field.name}
+                custom={i}
+                {...motionProps}
+                sx={{
+                  gridColumn: field.multiline ? "1 / -1" : "auto",
+                }}
+              >
                 <TextField
                   {...field}
                   fullWidth
@@ -128,7 +135,11 @@ export default function ContactForm() {
               </MotionBox>
             ))}
 
-            <MotionBox custom={fields.length + 1} {...motionProps}>
+            <MotionBox
+              custom={fields.length + 1}
+              {...motionProps}
+              sx={{ gridColumn: "1 / -1" }}
+            >
               <Button
                 type="submit"
                 fullWidth
@@ -155,4 +166,4 @@ export default function ContactForm() {
       </Container>
     </Box>
   );
-}
+    }

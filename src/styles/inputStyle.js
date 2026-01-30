@@ -1,7 +1,6 @@
 // ===== LAYOUT =====
 export const sectionWrapper = {
   py: { xs: 6, md: 10 },
-  px: 2,
 };
 
 // ===== CONTACT WRAPPER =====
@@ -12,16 +11,9 @@ export const contactWrapper = (theme) => {
     p: { xs: 3.5, md: 5 },
     borderRadius: 5,
     position: "relative",
-
-    // 👉 CLAVE PARA CENTRAR
-    maxWidth: 620,
-    width: "100%",
-    mx: "auto",
-
     background: isDark
       ? "linear-gradient(145deg, rgba(15,23,42,0.75), rgba(2,6,23,0.9))"
       : "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(241,245,249,0.85))",
-
     backdropFilter: "blur(20px)",
     border: "1px solid",
     borderColor: theme.palette.divider,
@@ -59,7 +51,6 @@ export const headerText = {
   color: "text.secondary",
   maxWidth: 380,
   mx: "auto",
-  textAlign: "center",
 };
 
 // ===== FORM =====

@@ -102,6 +102,8 @@ tu-correo@gmail.com
 
 {{from_email}}
 
+```
+
 ```bash
 
 - Content (HTML)

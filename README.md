@@ -58,7 +58,12 @@ Inicia sesión (puedes usar Google).
 
 Ejemplo:
 
+
+```bash
+
 service_fd9ejbr
+
+```
 
 3. Crear la plantilla (Template)
    
@@ -72,13 +77,18 @@ service_fd9ejbr
   
 Ejemplo:
 
+```bash
+
 template_pwsn0sn
+
+```
 
 4. Configurar la plantilla
 
 To Email:
 
-Pon tu correo, ej: patogol3737@gmail.com
+Pon tu correo, ej: 
+patogol3737@gmail.com
 
 - Subject
 

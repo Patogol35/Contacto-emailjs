@@ -1,3 +1,6 @@
+// ===== HELPERS =====
+const isDarkMode = (theme) => theme.palette.mode === "dark";
+
 // ===== LAYOUT =====
 export const sectionWrapper = {
   py: { xs: 6, md: 10 },
@@ -5,7 +8,7 @@ export const sectionWrapper = {
 
 // ===== CONTACT WRAPPER =====
 export const contactWrapper = (theme) => {
-  const isDark = theme.palette.mode === "dark";
+  const isDark = isDarkMode(theme);
 
   return {
     p: { xs: 3.5, md: 5 },
@@ -47,12 +50,6 @@ export const headerBadge = (theme) => ({
   background: `${theme.palette.primary.main}15`,
 });
 
-export const headerText = {
-  color: "text.secondary",
-  maxWidth: 380,
-  mx: "auto",
-};
-
 // ===== FORM =====
 export const formLayout = {
   display: "flex",
@@ -62,7 +59,7 @@ export const formLayout = {
 
 // ===== INPUTS =====
 export const inputStyle = (theme) => {
-  const isDark = theme.palette.mode === "dark";
+  const isDark = isDarkMode(theme);
 
   return {
     "& .MuiOutlinedInput-root": {

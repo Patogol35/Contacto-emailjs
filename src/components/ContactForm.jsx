@@ -91,7 +91,20 @@ export default function ContactForm() {
               <Typography fontWeight={700}>Contacto</Typography>
             </Box>
 
-            <Typography sx={headerText}>
+            {/* AUTOR / TÍTULO */}
+            <Typography
+              variant="subtitle2"
+              sx={{
+                mt: 1,
+                fontWeight: 500,
+                opacity: 0.75,
+                letterSpacing: "0.3px",
+              }}
+            >
+              Jorge Patricio Santamaría Cherrez
+            </Typography>
+
+            <Typography sx={headerText} mt={1.5}>
               Escríbeme y te responderé lo antes posible
             </Typography>
           </Box>
@@ -153,16 +166,6 @@ export default function ContactForm() {
             ¡Mensaje enviado con éxito! 🚀
           </Alert>
         </Snackbar>
-
-        {/* AUTHOR */}
-        <Box mt={4} textAlign="center">
-          <Typography
-            variant="body2"
-            sx={{ opacity: 0.7, fontSize: "0.85rem" }}
-          >
-            © {new Date().getFullYear()} — Jorge Patricio Santamaría Cherrez
-          </Typography>
-        </Box>
       </Container>
     </Box>
   );

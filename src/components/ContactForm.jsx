@@ -104,9 +104,18 @@ export default function ContactForm() {
               Jorge Patricio Santamaría Cherrez
             </Typography>
 
-            <Typography sx={headerText} mt={1.5}>
+            <Typography
+              variant="subtitle2"
+              sx={{
+                mt: 1,
+                fontWeight: 500,
+                opacity: 0.75,
+                letterSpacing: "0.3px",
+              }}
+            >
               Escríbeme y te responderé lo antes posible
             </Typography>
+            
           </Box>
 
           {/* FORM */}

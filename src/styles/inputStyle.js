@@ -53,14 +53,16 @@ export const headerText = {
   mx: "auto",
 };
 
-// ===== FORM =====
+// ===== FORM (CENTRADO REAL) =====
 export const formLayout = {
   display: "grid",
   gridTemplateColumns: {
     xs: "1fr",
-    md: "1fr 1fr",
+    md: "repeat(2, minmax(280px, 1fr))",
   },
   gap: 3,
+  maxWidth: 760,
+  mx: "auto",
 };
 
 // ===== INPUTS =====

@@ -17,7 +17,7 @@ import {
   Email,
   Message,
 } from "@mui/icons-material";
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { sendEmail } from "../utils/emailjs";
 import {
@@ -26,6 +26,10 @@ import {
   headerBadge,
   formLayout,
   submitButton,
+  sectionWrapper,
+  headerText,
+  adornmentStyle,
+  successAlert,
 } from "../styles/inputStyle";
 
 const MotionBox = motion(Box);
@@ -46,11 +50,7 @@ const motionProps = {
 };
 
 const fields = [
-  {
-    name: "from_name",
-    label: "Nombre",
-    icon: <Person />,
-  },
+  { name: "from_name", label: "Nombre", icon: <Person /> },
   {
     name: "from_email",
     label: "Correo electrónico",
@@ -71,15 +71,6 @@ export default function ContactForm() {
   const formRef = useRef(null);
   const [success, setSuccess] = useState(false);
 
-  const styles = useMemo(
-    () => ({
-      input: inputStyle(theme),
-      wrapper: contactWrapper(theme),
-      button: submitButton(theme),
-    }),
-    [theme]
-  );
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -92,28 +83,22 @@ export default function ContactForm() {
   };
 
   return (
-    <Box sx={{ py: { xs: 6, md: 10 } }}>
+    <Box sx={sectionWrapper}>
       <Container maxWidth="sm">
         <MotionBox
           component={Paper}
           elevation={0}
           {...motionProps}
-          sx={styles.wrapper}
+          sx={contactWrapper(theme)}
         >
           {/* HEADER */}
           <Box textAlign="center" mb={4}>
-            <Box
-              sx={{
-                ...headerBadge,
-                borderColor: "primary.main",
-                mb: 2,
-              }}
-            >
+            <Box sx={headerBadge(theme)}>
               <ContactMail color="primary" />
               <Typography fontWeight={700}>Contacto</Typography>
             </Box>
 
-            <Typography color="text.secondary">
+            <Typography sx={headerText}>
               Escríbeme y te responderé lo antes posible
             </Typography>
           </Box>
@@ -131,29 +116,24 @@ export default function ContactForm() {
                   {...field}
                   fullWidth
                   required
-                  inputProps={{ "aria-label": field.label }}
                   InputProps={{
                     startAdornment: (
-                      <InputAdornment
-                        position="start"
-                        sx={{ color: "primary.main" }}
-                      >
+                      <InputAdornment position="start" sx={adornmentStyle}>
                         {field.icon}
                       </InputAdornment>
                     ),
                   }}
-                  sx={styles.input}
+                  sx={inputStyle(theme)}
                 />
               </MotionBox>
             ))}
 
-            {/* BUTTON */}
             <MotionBox custom={fields.length + 1} {...motionProps}>
               <Button
                 type="submit"
                 fullWidth
                 endIcon={<Send />}
-                sx={styles.button}
+                sx={submitButton(theme)}
               >
                 Enviar mensaje
               </Button>
@@ -168,7 +148,7 @@ export default function ContactForm() {
           onClose={() => setSuccess(false)}
           anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          <Alert severity="success" sx={{ fontWeight: 600 }}>
+          <Alert severity="success" sx={successAlert}>
             ¡Mensaje enviado con éxito! 🚀
           </Alert>
         </Snackbar>

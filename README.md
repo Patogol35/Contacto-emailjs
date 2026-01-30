@@ -90,11 +90,19 @@ tu-correo@gmail.com
 
 - From Name
 
+```bash
+
 {{from_name}}
+
+```
 
 - Reply to
 
+```bash
+
 {{from_email}}
+
+```bash
 
 - Content (HTML)
 
@@ -119,9 +127,14 @@ tu-correo@gmail.com
 - Ve a Account → API Keys
   
 - Copia la Public Key
+
 Ejemplo:
 
+```bash
+
 Try7tc29-wnfxyPyf
+
+```
 
 ---
 
@@ -129,10 +142,13 @@ Try7tc29-wnfxyPyf
 
 - Crea un archivo .env en la raíz del proyecto:
 
+```bash
 
 VITE_EMAIL_SERVICE=service_fd9ejbr
 VITE_EMAIL_TEMPLATE=template_pwsn0sn
 VITE_EMAIL_PUBLIC_KEY=Try7tc29-wnfxyPyf
+
+```
 
 ---
 

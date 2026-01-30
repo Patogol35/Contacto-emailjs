@@ -87,12 +87,12 @@ template_pwsn0sn
 
 To Email:
 
-Pon tu correo, ej: 
+Pon tu correo, ejemplo: 
 patogol3737@gmail.com
 
 - Subject
 
-Ej: 📩 Nuevo mensaje desde el portafolio
+Ejemplo: 📩 Nuevo mensaje desde el portafolio
 
 - To Email
 

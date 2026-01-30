@@ -62,37 +62,82 @@ template_pwsn0sn
 
 4. Configurar la plantilla
 
-Subject
+To Email:
 
-📩 Nuevo mensaje de {{from_name}}
+Pon tu correo, ej: patogol3737@gmail.com
 
-To Email
+- Subject
+
+Ej: 📩 Nuevo mensaje desde el portafolio
+
+- To Email
 
 tu-correo@gmail.com
 
-From Name
+- From Name
 
 {{from_name}}
 
-From Email
-
-Use Default Email Address
-
-Reply to
+- Reply to
 
 {{from_email}}
 
-Content (HTML)
+- Content (HTML)
 
-Html
-<h3>📨 Nuevo mensaje desde el portafolio</h3>
+```bash
 
-<p><strong>Nombre:</strong> {{from_name}}</p>
-<p><strong>Email:</strong> {{from_email}}</p>
+<div style="font-family: system-ui, sans-serif, Arial; font-size: 12px">
+  <div>
+    A message by <strong>{{from_name}}</strong> has been received.
+    Kindly respond at your earliest convenience.
+  </div>
 
-<p><strong>Mensaje:</strong></p>
-<p>{{message}}</p>
+  <div
+    style="
+      margin-top: 20px;
+      padding: 15px 0;
+      border-width: 1px 0;
+      border-style: dashed;
+      border-color: lightgrey;
+    "
+  >
+    <table role="presentation">
+      <tr>
+        <td style="vertical-align: top">
+          <div
+            style="
+              padding: 6px 10px;
+              margin: 0 10px;
+              background-color: aliceblue;
+              border-radius: 5px;
+              font-size: 26px;
+            "
+            role="img"
+          >
+            👤
+          </div>
+        </td>
 
+        <td style="vertical-align: top">
+          <div style="color: #2c3e50; font-size: 16px">
+            <strong>{{from_name}}</strong>
+          </div>
+
+          <div style="color: #6b7280; font-size: 13px">
+            {{from_email}}
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 20px; font-size: 14px">
+    <strong>Message:</strong>
+    <p style="margin-top: 6px">{{message}}</p>
+  </div>
+</div>
+
+```
 5. Obtener la Public Key
    
 - Ve a Account → API Keys

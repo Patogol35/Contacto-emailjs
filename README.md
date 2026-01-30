@@ -1,4 +1,4 @@
-📩 Contact Form – React + Vite + MUI + EmailJS
+📩 Formulario de Contacto – React + Vite + MUI + EmailJS
 
 Formulario de contacto moderno, responsive y animado, construido con React (Vite), Material UI, Framer Motion y EmailJS.
 Permite enviar correos electrónicos sin necesidad de backend, ideal para portafolios personales y sitios profesionales.

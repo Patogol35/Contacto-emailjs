@@ -45,7 +45,7 @@ const fadeUp = {
 const motionProps = {
   variants: fadeUp,
   initial: "hidden",
-  whileInView: "visible",
+  animate: "visible",
 };
 
 const fields = [
@@ -103,25 +103,29 @@ export default function ContactForm() {
             onSubmit={handleSubmit}
             sx={formLayout}
           >
-            {fields.map((field, i) => (
-              <MotionBox key={field.name} custom={i} {...motionProps}>
-                <TextField
-                  {...field}
-                  fullWidth
-                  required
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment
-                        position="start"
-                        sx={adornmentStyle}
-                      >
-                        {field.icon}
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={inputStyle(theme)}
-                />
-              </MotionBox>
+            {fields.map((field) => (
+              <TextField
+                key={field.name}
+                {...field}
+                fullWidth
+                required
+                aria-label={field.label}
+                autoComplete={
+                  field.name === "from_email"
+                    ? "email"
+                    : field.name === "from_name"
+                    ? "name"
+                    : "off"
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" sx={adornmentStyle}>
+                      {field.icon}
+                    </InputAdornment>
+                  ),
+                }}
+                sx={inputStyle(theme)}
+              />
             ))}
 
             <MotionBox custom={fields.length + 1} {...motionProps}>

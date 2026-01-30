@@ -90,11 +90,7 @@ backdropFilter: `blur(${GLASS_BLUR.input})`,
         lineHeight: 1.6,
       },
 
-      "& fieldset": {
-        borderColor: isDark
-          ? "rgba(96,165,250,0.22)"
-          : "rgba(37,99,235,0.55)",
-      },
+      
 
       "&:hover fieldset": {
         borderColor: theme.palette.primary.light,

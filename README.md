@@ -1,7 +1,7 @@
 📩 Contact Form – React + Vite + MUI + EmailJS
 
-Formulario de contacto moderno y responsive construido con React (Vite), Material UI, Framer Motion y EmailJS.  
-Ideal para portafolios personales o sitios profesionales, con envío de correos sin backend.
+Formulario de contacto moderno, responsive y animado, construido con React (Vite), Material UI, Framer Motion y EmailJS.
+Permite enviar correos electrónicos sin necesidad de backend, ideal para portafolios personales y sitios profesionales.
 
 --- 
 
@@ -11,6 +11,20 @@ Ideal para portafolios personales o sitios profesionales, con envío de correos 
 
 ---
 
+✨ Características
+- Diseño moderno con Material UI
+  
+- Totalmente responsive
+  
+- Animaciones suaves con Framer Motion
+  
+- Envío de correos sin backend (EmailJS)
+  
+- Uso de variables de entorno
+  
+- Deploy listo para Vercel
+
+---
 ⚙️ Tecnologías utilizadas
 
 - React (Vite)
@@ -86,55 +100,17 @@ tu-correo@gmail.com
 
 ```bash
 
-<div style="font-family: system-ui, sans-serif, Arial; font-size: 12px">
-  <div>
-    A message by <strong>{{from_name}}</strong> has been received.
-    Kindly respond at your earliest convenience.
-  </div>
+<div style="font-family: system-ui, sans-serif; font-size: 12px">
+  <p>
+    Mensaje enviado por <strong>{{from_name}}</strong>
+  </p>
 
-  <div
-    style="
-      margin-top: 20px;
-      padding: 15px 0;
-      border-width: 1px 0;
-      border-style: dashed;
-      border-color: lightgrey;
-    "
-  >
-    <table role="presentation">
-      <tr>
-        <td style="vertical-align: top">
-          <div
-            style="
-              padding: 6px 10px;
-              margin: 0 10px;
-              background-color: aliceblue;
-              border-radius: 5px;
-              font-size: 26px;
-            "
-            role="img"
-          >
-            👤
-          </div>
-        </td>
+  <p><strong>Email:</strong> {{from_email}}</p>
 
-        <td style="vertical-align: top">
-          <div style="color: #2c3e50; font-size: 16px">
-            <strong>{{from_name}}</strong>
-          </div>
+  <hr />
 
-          <div style="color: #6b7280; font-size: 13px">
-            {{from_email}}
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <div style="margin-top: 20px; font-size: 14px">
-    <strong>Message:</strong>
-    <p style="margin-top: 6px">{{message}}</p>
-  </div>
+  <p><strong>Mensaje:</strong></p>
+  <p>{{message}}</p>
 </div>
 
 ```

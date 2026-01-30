@@ -1,6 +1,11 @@
 // ===== HELPERS =====
 const isDarkMode = (theme) => theme.palette.mode === "dark";
 
+const GLASS_BLUR = {
+  card: "28px",
+  input: "8px",
+};
+
 // ===== LAYOUT =====
 export const sectionWrapper = {
   py: { xs: 6, md: 10 },
@@ -15,14 +20,14 @@ export const contactWrapper = (theme) => {
     borderRadius: 5,
     position: "relative",
     background: isDark
-      ? "linear-gradient(145deg, rgba(15,23,42,0.75), rgba(2,6,23,0.9))"
-      : "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(241,245,249,0.85))",
-    backdropFilter: "blur(20px)",
+      ? "linear-gradient(145deg, rgba(15,23,42,0.78), rgba(2,6,23,0.92))"
+      : "linear-gradient(145deg, rgba(255,255,255,0.95), rgba(241,245,249,0.9))",
+    backdropFilter: `blur(${GLASS_BLUR.card})`,
     border: "1px solid",
     borderColor: theme.palette.divider,
     boxShadow: isDark
-      ? "0 25px 60px rgba(0,0,0,0.45)"
-      : "0 25px 60px rgba(0,0,0,0.15)",
+      ? "0 30px 70px rgba(0,0,0,0.5)"
+      : "0 30px 70px rgba(0,0,0,0.18)",
     overflow: "hidden",
 
     "&::before": {
@@ -30,7 +35,7 @@ export const contactWrapper = (theme) => {
       position: "absolute",
       inset: 0,
       borderRadius: "inherit",
-      background: `radial-gradient(circle at top, ${theme.palette.primary.main}20, transparent 60%)`,
+      background: `radial-gradient(circle at top, ${theme.palette.primary.main}22, transparent 60%)`,
       pointerEvents: "none",
     },
   };
@@ -47,14 +52,20 @@ export const headerBadge = (theme) => ({
   borderRadius: "999px",
   border: "1px solid",
   borderColor: theme.palette.primary.main,
-  background: `${theme.palette.primary.main}15`,
+  background: `${theme.palette.primary.main}14`,
+  boxShadow: `0 4px 12px ${theme.palette.primary.main}25`,
+  transition: "transform .2s ease",
+
+  "&:hover": {
+    transform: "translateY(-1px)",
+  },
 });
 
 // ===== FORM =====
 export const formLayout = {
   display: "flex",
   flexDirection: "column",
-  gap: 3.2,
+  gap: 3,
 };
 
 // ===== INPUTS =====
@@ -65,19 +76,24 @@ export const inputStyle = (theme) => {
     "& .MuiOutlinedInput-root": {
       borderRadius: 3,
       background: isDark
-        ? "rgba(2,6,23,0.6)"
-        : "rgba(255,255,255,0.85)",
-      backdropFilter: "blur(12px)",
+        ? "rgba(2,6,23,0.55)"
+        : "rgba(255,255,255,0.88)",
+      backdropFilter: `blur(${GLASS_BLUR.input})`,
       transition: "all .25s ease",
 
-      "& input, & textarea": {
-        fontWeight: 600,
+      "& input": {
+        fontWeight: 500,
+      },
+
+      "& textarea": {
+        fontWeight: 400,
+        lineHeight: 1.6,
       },
 
       "& fieldset": {
         borderColor: isDark
-          ? "rgba(96,165,250,0.25)"
-          : "rgba(37,99,235,0.6)",
+          ? "rgba(96,165,250,0.22)"
+          : "rgba(37,99,235,0.55)",
       },
 
       "&:hover fieldset": {
@@ -85,7 +101,7 @@ export const inputStyle = (theme) => {
       },
 
       "&:hover": {
-        boxShadow: `0 4px 12px ${theme.palette.primary.main}20`,
+        boxShadow: `0 4px 12px ${theme.palette.primary.main}18`,
       },
 
       "&.Mui-focused": {
@@ -94,6 +110,15 @@ export const inputStyle = (theme) => {
 
       "&.Mui-focused fieldset": {
         borderColor: theme.palette.primary.main,
+      },
+
+      // ERROR STATE
+      "&.Mui-error fieldset": {
+        borderColor: theme.palette.error.main,
+      },
+
+      "&.Mui-error": {
+        boxShadow: `0 0 0 2px ${theme.palette.error.main}25`,
       },
     },
   };
@@ -105,7 +130,7 @@ export const adornmentStyle = {
 
 // ===== BUTTON =====
 export const submitButton = (theme) => ({
-  py: 1.8,
+  py: 1.7,
   borderRadius: "999px",
   fontWeight: 700,
   fontSize: "1rem",
@@ -113,17 +138,23 @@ export const submitButton = (theme) => ({
   textTransform: "none",
   background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
   color: "#fff",
-  boxShadow: `0 10px 30px ${theme.palette.primary.main}55`,
+  boxShadow: `0 10px 28px ${theme.palette.primary.main}55`,
   transition: "all .25s ease",
 
   "&:hover": {
-    transform: "translateY(-2px)",
-    boxShadow: `0 15px 40px ${theme.palette.primary.main}75`,
-    opacity: 0.95,
+    transform: "translateY(-1.5px)",
+    boxShadow: `0 14px 36px ${theme.palette.primary.main}70`,
+    opacity: 0.96,
   },
 
   "&:active": {
     transform: "translateY(0)",
+  },
+
+  "&.Mui-disabled": {
+    opacity: 0.6,
+    boxShadow: "none",
+    transform: "none",
   },
 });
 
@@ -131,4 +162,5 @@ export const submitButton = (theme) => ({
 export const successAlert = {
   fontWeight: 600,
   borderRadius: 2,
+  backdropFilter: "blur(8px)",
 };

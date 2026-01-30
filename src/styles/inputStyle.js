@@ -78,7 +78,7 @@ export const inputStyle = (theme) => {
       background: isDark
         ? "rgba(2,6,23,0.55)"
         : "rgba(255,255,255,0.88)",
-      backdropFilter: `blur(${GLASS_BLUR.input})`,
+      
       transition: "all .25s ease",
 
       "& input": {

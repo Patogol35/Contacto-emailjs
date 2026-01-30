@@ -76,6 +76,19 @@ export default function ContactForm() {
   } = useContactForm();
 
   return (
+
+    {/* AUTHOR */}
+<Box mt={4} textAlign="center">
+  <Typography
+    variant="body2"
+    sx={{
+      opacity: 0.7,
+      fontSize: "0.85rem",
+    }}
+  >
+    © {new Date().getFullYear()} — Jorge Patricio Santamaría Cherrez
+  </Typography>
+</Box>
     <Box sx={sectionWrapper}>
       <Container maxWidth="sm">
         <MotionBox

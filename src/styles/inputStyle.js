@@ -1,44 +1,15 @@
-// ===== INPUTS =====
-export const inputStyle = (theme) => {
-  const isDark = theme.palette.mode === "dark";
-
-  return {
-    "& .MuiOutlinedInput-root": {
-      borderRadius: 3,
-      background: isDark
-        ? "rgba(15,23,42,0.55)"
-        : "rgba(255,255,255,0.75)",
-      backdropFilter: "blur(14px)",
-
-      "& input, & textarea": {
-        fontWeight: 600,
-        color: theme.palette.text.primary,
-      },
-
-      "& input::placeholder, & textarea::placeholder": {
-        color: isDark
-          ? "rgba(255,255,255,0.45)"
-          : "rgba(2,6,23,0.45)",
-      },
-
-      "& fieldset": {
-        borderColor: isDark
-          ? "rgba(96,165,250,0.35)"
-          : "rgba(37,99,235,0.85)",
-      },
-
-      "&:hover fieldset, &.Mui-focused fieldset": {
-        borderColor: theme.palette.primary.main,
-      },
-    },
-
-    "& .MuiInputLabel-root": {
-      fontWeight: 600,
-    },
-  };
+// ===== LAYOUT =====
+export const sectionWrapper = {
+  py: { xs: 6, md: 10 },
 };
 
-// ===== CONTACT FORM =====
+export const formLayout = {
+  display: "flex",
+  flexDirection: "column",
+  gap: 3,
+};
+
+// ===== CONTACT WRAPPER =====
 export const contactWrapper = (theme) => {
   const isDark = theme.palette.mode === "dark";
 
@@ -54,22 +25,57 @@ export const contactWrapper = (theme) => {
   };
 };
 
-export const headerBadge = {
+// ===== HEADER =====
+export const headerBadge = (theme) => ({
   display: "inline-flex",
   alignItems: "center",
   gap: 1,
   px: 3,
   py: 1,
+  mb: 2,
   borderRadius: "999px",
   border: "1px solid",
+  borderColor: theme.palette.primary.main,
+});
+
+export const headerText = {
+  color: "text.secondary",
 };
 
-export const formLayout = {
-  display: "flex",
-  flexDirection: "column",
-  gap: 3,
+// ===== INPUTS =====
+export const inputStyle = (theme) => {
+  const isDark = theme.palette.mode === "dark";
+
+  return {
+    "& .MuiOutlinedInput-root": {
+      borderRadius: 3,
+      background: isDark
+        ? "rgba(15,23,42,0.55)"
+        : "rgba(255,255,255,0.75)",
+      backdropFilter: "blur(14px)",
+
+      "& input, & textarea": {
+        fontWeight: 600,
+      },
+
+      "& fieldset": {
+        borderColor: isDark
+          ? "rgba(96,165,250,0.35)"
+          : "rgba(37,99,235,0.85)",
+      },
+
+      "&:hover fieldset, &.Mui-focused fieldset": {
+        borderColor: theme.palette.primary.main,
+      },
+    },
+  };
 };
 
+export const adornmentStyle = {
+  color: "primary.main",
+};
+
+// ===== BUTTON =====
 export const submitButton = (theme) => ({
   py: 1.7,
   borderRadius: "999px",
@@ -81,3 +87,8 @@ export const submitButton = (theme) => ({
     opacity: 0.9,
   },
 });
+
+// ===== ALERT =====
+export const successAlert = {
+  fontWeight: 600,
+};

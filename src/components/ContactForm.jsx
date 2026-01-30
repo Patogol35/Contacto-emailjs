@@ -18,6 +18,7 @@ import {
   Message,
 } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
+import { useMemo } from "react";
 import { useContactForm } from "../hooks/useContactForm";
 import {
   inputStyle,
@@ -26,7 +27,6 @@ import {
   formLayout,
   submitButton,
   sectionWrapper,
-  headerText,
   adornmentStyle,
   successAlert,
 } from "../styles/inputStyle";
@@ -42,26 +42,20 @@ const fadeUp = {
   }),
 };
 
-const motionProps = {
-  variants: fadeUp,
-  initial: "hidden",
-  animate: "visible",
-};
-
 const fields = [
-  { name: "from_name", label: "Nombre", icon: <Person /> },
+  { name: "from_name", label: "Nombre", icon: Person },
   {
     name: "from_email",
     label: "Correo electrónico",
     type: "email",
-    icon: <Email />,
+    icon: Email,
   },
   {
     name: "message",
     label: "Mensaje",
     multiline: true,
     rows: 4,
-    icon: <Message />,
+    icon: Message,
   },
 ];
 
@@ -70,10 +64,20 @@ export default function ContactForm() {
   const {
     formRef,
     success,
+    error,
     loading,
     handleSubmit,
     handleClose,
   } = useContactForm();
+
+  const motionProps = useMemo(
+    () => ({
+      variants: fadeUp,
+      initial: "hidden",
+      animate: "visible",
+    }),
+    []
+  );
 
   return (
     <Box sx={sectionWrapper}>
@@ -91,31 +95,19 @@ export default function ContactForm() {
               <Typography fontWeight={700}>Contacto</Typography>
             </Box>
 
-            {/* AUTOR / TÍTULO */}
             <Typography
               variant="subtitle2"
-              sx={{
-                mt: 1,
-                fontWeight: 500,
-                opacity: 0.75,
-                letterSpacing: "0.3px",
-              }}
+              sx={{ mt: 1, fontWeight: 500, opacity: 0.75 }}
             >
               Jorge Patricio Santamaría Cherrez
             </Typography>
 
             <Typography
               variant="subtitle2"
-              sx={{
-                mt: 1,
-                fontWeight: 500,
-                opacity: 0.75,
-                letterSpacing: "0.3px",
-              }}
+              sx={{ mt: 1, fontWeight: 500, opacity: 0.75 }}
             >
               Escríbeme y te responderé lo antes posible
             </Typography>
-            
           </Box>
 
           {/* FORM */}
@@ -125,30 +117,42 @@ export default function ContactForm() {
             onSubmit={handleSubmit}
             sx={formLayout}
           >
-            {fields.map((field) => (
-              <TextField
-                key={field.name}
-                {...field}
-                fullWidth
-                required
-                aria-label={field.label}
-                autoComplete={
-                  field.name === "from_email"
-                    ? "email"
-                    : field.name === "from_name"
-                    ? "name"
-                    : "off"
-                }
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start" sx={adornmentStyle}>
-                      {field.icon}
-                    </InputAdornment>
-                  ),
-                }}
-                sx={inputStyle(theme)}
-              />
-            ))}
+            {fields.map((field, index) => {
+              const Icon = field.icon;
+
+              return (
+                <MotionBox
+                  key={field.name}
+                  custom={index}
+                  {...motionProps}
+                >
+                  <TextField
+                    {...field}
+                    fullWidth
+                    required
+                    aria-label={`Campo ${field.label}`}
+                    autoComplete={
+                      field.name === "from_email"
+                        ? "email"
+                        : field.name === "from_name"
+                        ? "name"
+                        : "off"
+                    }
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment
+                          position="start"
+                          sx={adornmentStyle}
+                        >
+                          <Icon />
+                        </InputAdornment>
+                      ),
+                    }}
+                    sx={inputStyle(theme)}
+                  />
+                </MotionBox>
+              );
+            })}
 
             <MotionBox custom={fields.length + 1} {...motionProps}>
               <Button
@@ -164,7 +168,7 @@ export default function ContactForm() {
           </Box>
         </MotionBox>
 
-        {/* ALERT */}
+        {/* SUCCESS */}
         <Snackbar
           open={success}
           autoHideDuration={3000}
@@ -175,7 +179,19 @@ export default function ContactForm() {
             ¡Mensaje enviado con éxito! 🚀
           </Alert>
         </Snackbar>
+
+        {/* ERROR */}
+        <Snackbar
+          open={error}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+          <Alert severity="error" sx={successAlert}>
+            Ocurrió un error al enviar el mensaje 😥
+          </Alert>
+        </Snackbar>
       </Container>
     </Box>
   );
-}
+          }

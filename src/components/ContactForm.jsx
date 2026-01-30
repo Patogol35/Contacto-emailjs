@@ -5,6 +5,7 @@ import {
   Paper,
 } from "@mui/material";
 import { Send } from "@mui/icons-material";
+import { Person, Email, Message } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
 import { useTheme } from "@mui/material/styles";

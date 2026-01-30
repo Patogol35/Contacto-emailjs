@@ -49,15 +49,18 @@ export const headerBadge = (theme) => ({
 
 export const headerText = {
   color: "text.secondary",
-  maxWidth: 380,
+  maxWidth: 420,
   mx: "auto",
 };
 
 // ===== FORM =====
 export const formLayout = {
-  display: "flex",
-  flexDirection: "column",
-  gap: 3.2,
+  display: "grid",
+  gridTemplateColumns: {
+    xs: "1fr",
+    md: "1fr 1fr",
+  },
+  gap: 3,
 };
 
 // ===== INPUTS =====
@@ -81,10 +84,6 @@ export const inputStyle = (theme) => {
         borderColor: isDark
           ? "rgba(96,165,250,0.25)"
           : "rgba(37,99,235,0.6)",
-      },
-
-      "&:hover": {
-        transform: "translateY(-1px)",
       },
 
       "&:hover fieldset": {

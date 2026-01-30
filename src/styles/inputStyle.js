@@ -83,12 +83,12 @@ export const inputStyle = (theme) => {
           : "rgba(37,99,235,0.6)",
       },
 
-      "&:hover": {
-        transform: "translateY(-1px)",
-      },
-
       "&:hover fieldset": {
         borderColor: theme.palette.primary.light,
+      },
+
+      "&:hover": {
+        boxShadow: `0 4px 12px ${theme.palette.primary.main}20`,
       },
 
       "&.Mui-focused": {

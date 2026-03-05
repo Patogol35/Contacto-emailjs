@@ -23,9 +23,27 @@ import { StatusSnackbar } from "./StatusSnackbar";
 const MotionPaper = motion(Paper);
 
 const fields = [
-  { name: "from_name", label: "Nombre", icon: Person },
-  { name: "from_email", label: "Correo", type: "email", icon: Email },
-  { name: "message", label: "Mensaje", multiline: true, rows: 4, icon: Message },
+  {
+    name: "from_name",
+    label: "Nombre",
+    placeholder: "Tu nombre",
+    icon: Person,
+  },
+  {
+    name: "from_email",
+    label: "Correo",
+    type: "email",
+    placeholder: "tu@email.com",
+    icon: Email,
+  },
+  {
+    name: "message",
+    label: "Mensaje",
+    placeholder: "Escribe tu mensaje...",
+    multiline: true,
+    rows: 4,
+    icon: Message,
+  },
 ];
 
 export default function ContactForm() {

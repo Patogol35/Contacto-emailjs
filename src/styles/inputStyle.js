@@ -29,8 +29,8 @@ export const contactWrapper = (theme) => {
       ? "0 30px 70px rgba(0,0,0,0.5)"
       : "0 30px 70px rgba(0,0,0,0.18)",
     overflow: "hidden",
-    
-   "&::before": {
+
+    "&::before": {
       content: '""',
       position: "absolute",
       inset: 0,
@@ -78,9 +78,9 @@ export const inputStyle = (theme) => {
       background: isDark
         ? "rgba(2,6,23,0.55)"
         : "rgba(255,255,255,0.88)",
-      
       transition: "all .25s ease",
-backdropFilter: `blur(${GLASS_BLUR.input})`,
+      backdropFilter: `blur(${GLASS_BLUR.input})`,
+
       "& input": {
         fontWeight: 500,
       },
@@ -90,32 +90,29 @@ backdropFilter: `blur(${GLASS_BLUR.input})`,
         lineHeight: 1.6,
       },
 
-      
-"& fieldset": {
-        borderColor: isDark
-          ? "rgba(96,165,250,0.22)"
-          : "rgba(37,99,235,0.55)",
+      // QUITAR BORDE
+      "& fieldset": {
+        border: "none",
       },
-      
+
       "&:hover fieldset": {
-        borderColor: theme.palette.primary.light,
-      },
-
-      "&:hover": {
-  boxShadow: `0 4px 12px ${theme.palette.primary.main}18`,
-},
-
-      "&.Mui-focused": {
-        boxShadow: `0 0 0 2px ${theme.palette.primary.main}25`,
+        border: "none",
       },
 
       "&.Mui-focused fieldset": {
-        borderColor: theme.palette.primary.main,
+        border: "none",
       },
 
-      // ERROR STATE
       "&.Mui-error fieldset": {
-        borderColor: theme.palette.error.main,
+        border: "none",
+      },
+
+      "&:hover": {
+        boxShadow: `0 4px 12px ${theme.palette.primary.main}18`,
+      },
+
+      "&.Mui-focused": {
+        boxShadow: `0 0 0 2px ${theme.palette.primary.main}25`,
       },
 
       "&.Mui-error": {

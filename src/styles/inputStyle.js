@@ -1,88 +1,59 @@
 export const inputStyle = (theme) => {
-  const isDark = isDarkMode(theme);
+  const isDark = theme.palette.mode === "dark";
 
   return {
+    "& .MuiInputLabel-root": {
+      fontWeight: 500,
+      fontSize: "0.95rem",
+      letterSpacing: "0.3px",
+      color: isDark ? "#cbd5f5" : "#334155",
+
+      "&.Mui-focused": {
+        color: theme.palette.primary.main,
+      },
+    },
+
     "& .MuiOutlinedInput-root": {
       borderRadius: 3,
       background: isDark
         ? "rgba(2,6,23,0.60)"
         : "rgba(255,255,255,0.92)",
 
-      backdropFilter: `blur(${GLASS_BLUR.input})`,
+      backdropFilter: "blur(8px)",
       transition: "all .25s ease",
 
-      fontSize: "0.95rem",
-
-      "& input": {
-        fontWeight: 500,
-        padding: "14px 14px",
-        color: isDark ? "#e5e7eb" : "#0f172a",
-      },
-
-      "& textarea": {
-        fontWeight: 400,
-        padding: "14px 14px",
-        lineHeight: 1.65,
-        color: isDark ? "#e5e7eb" : "#0f172a",
-      },
-
-      // PLACEHOLDER
-      "& input::placeholder, & textarea::placeholder": {
-        color: isDark
-          ? "rgba(203,213,225,0.55)"
-          : "rgba(100,116,139,0.65)",
-        opacity: 1,
-        fontWeight: 400,
-      },
-
-      // BORDER
       "& fieldset": {
         borderColor: isDark
-          ? "rgba(96,165,250,0.22)"
+          ? "rgba(96,165,250,0.25)"
           : "rgba(37,99,235,0.45)",
-        transition: "border-color .25s ease",
       },
 
       "&:hover fieldset": {
         borderColor: theme.palette.primary.light,
       },
 
-      "&:hover": {
-        boxShadow: `0 4px 12px ${theme.palette.primary.main}18`,
-      },
-
-      // FOCUS
-      "&.Mui-focused": {
-        boxShadow: `0 0 0 2px ${theme.palette.primary.main}25`,
-      },
-
       "&.Mui-focused fieldset": {
         borderColor: theme.palette.primary.main,
       },
-
-      // ERROR
-      "&.Mui-error fieldset": {
-        borderColor: theme.palette.error.main,
-      },
-
-      "&.Mui-error": {
-        boxShadow: `0 0 0 2px ${theme.palette.error.main}25`,
-      },
     },
 
-    // LABEL
-    "& .MuiInputLabel-root": {
+    "& .MuiOutlinedInput-input": {
+      padding: "15px",
+      fontSize: "0.95rem",
       fontWeight: 500,
-      letterSpacing: ".2px",
-      color: isDark ? "rgba(226,232,240,0.75)" : "rgba(15,23,42,0.7)",
+      color: isDark ? "#e5e7eb" : "#0f172a",
+    },
 
-      "&.Mui-focused": {
-        color: theme.palette.primary.main,
-      },
+    "& .MuiOutlinedInput-input::placeholder": {
+      color: isDark
+        ? "rgba(203,213,225,0.55)"
+        : "rgba(100,116,139,0.65)",
+      opacity: 1,
+      fontWeight: 400,
+    },
 
-      "&.Mui-error": {
-        color: theme.palette.error.main,
-      },
+    "& textarea": {
+      lineHeight: 1.6,
     },
   };
 };

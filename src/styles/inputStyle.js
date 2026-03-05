@@ -90,7 +90,7 @@ export const inputStyle = (theme) => {
         lineHeight: 1.6,
       },
 
-      // QUITAR BORDE
+      // quitar borde
       "& fieldset": {
         border: "none",
       },
@@ -107,16 +107,17 @@ export const inputStyle = (theme) => {
         border: "none",
       },
 
+      // quitar sombras que causaban la línea azul
       "&:hover": {
-        boxShadow: `0 4px 12px ${theme.palette.primary.main}18`,
+        boxShadow: "none",
       },
 
       "&.Mui-focused": {
-        boxShadow: `0 0 0 2px ${theme.palette.primary.main}25`,
+        boxShadow: "none",
       },
 
       "&.Mui-error": {
-        boxShadow: `0 0 0 2px ${theme.palette.error.main}25`,
+        boxShadow: "none",
       },
     },
   };

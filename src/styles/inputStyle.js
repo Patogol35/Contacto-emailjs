@@ -78,7 +78,9 @@ export const inputStyle = (theme) => {
       background: isDark
         ? "rgba(2,6,23,0.55)"
         : "rgba(255,255,255,0.88)",
+
       transition: "all .25s ease",
+
       backdropFilter: `blur(${GLASS_BLUR.input})`,
 
       "& input": {
@@ -90,34 +92,31 @@ export const inputStyle = (theme) => {
         lineHeight: 1.6,
       },
 
-      // quitar borde
       "& fieldset": {
-        border: "none",
+        borderColor: isDark
+          ? "rgba(96,165,250,0.22)"
+          : "rgba(37,99,235,0.55)",
       },
 
       "&:hover fieldset": {
-        border: "none",
+        borderColor: theme.palette.primary.light,
+      },
+
+      "&:hover": {
+        boxShadow: `0 4px 12px ${theme.palette.primary.main}18`,
       },
 
       "&.Mui-focused fieldset": {
-        border: "none",
+        borderColor: theme.palette.primary.main,
       },
 
+      // ERROR STATE
       "&.Mui-error fieldset": {
-        border: "none",
-      },
-
-      // quitar sombras que causaban la línea azul
-      "&:hover": {
-        boxShadow: "none",
-      },
-
-      "&.Mui-focused": {
-        boxShadow: "none",
+        borderColor: theme.palette.error.main,
       },
 
       "&.Mui-error": {
-        boxShadow: "none",
+        boxShadow: `0 0 0 2px ${theme.palette.error.main}25`,
       },
     },
   };

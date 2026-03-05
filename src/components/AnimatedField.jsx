@@ -26,15 +26,9 @@ export function AnimatedField({ field, index }) {
       animate="visible"
     >
       <TextField
-        name={field.name}
-        label={field.label}
-        placeholder={field.placeholder}
-        type={field.type || "text"}
-        multiline={field.multiline || false}
-        rows={field.rows || 1}
+        {...field}
         fullWidth
         required
-        variant="outlined"
         aria-label={`Campo ${field.label}`}
         InputProps={{
           startAdornment: (
@@ -43,7 +37,7 @@ export function AnimatedField({ field, index }) {
             </InputAdornment>
           ),
         }}
-        sx={(theme) => inputStyle(theme)}
+        sx={inputStyle(theme)}
       />
     </MotionBox>
   );
